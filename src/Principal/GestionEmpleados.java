@@ -5,6 +5,8 @@
  */
 package Principal;
 
+import Dominio.Empleado;
+import Dominio.Gerente;
 import Dominio.Persona;
 import java.lang.reflect.Array;
 
@@ -50,6 +52,8 @@ public class GestionEmpleados {
       Persona p2 = new Persona("Augusto","Sanchez");
       Persona p3 = new Persona("Angustias","Sanabria");
       Persona p4 = new Persona("Laura","Saavedra");
+      Persona emplo = new Empleado("7894565489516",654,"Laura","Saavedra");
+      Persona geren = new Gerente("financials","ADE", "90394859485948598", 984, "Sandra", "García");
       
       
         System.out.println(p1);
@@ -60,14 +64,17 @@ public class GestionEmpleados {
         tbPers[0]= p1;
         tbPers[1]= p2;
         
-        
-        
-        
         Persona Bid [][] = {{p1,p2},{p3,p4}};
         
        imprMatriz(Bid);
        
        imprMatriz(tbBid);
+       
+        System.out.println("");
+       ejercicio(p2);
+       ejercicio(emplo);
+       ejercicio(geren);
+       
     }
     
     //funcion que imprima tanto una matriz enteros como personas
@@ -79,6 +86,31 @@ public class GestionEmpleados {
                 System.out.print(Mat[i][j]+" || ");
             }
         }
+    }
+    
+    public static void ejercicio(Persona p){
+        
+        if(p instanceof Gerente){
+            System.out.println("Es una instancia de Gerente");
+            System.out.println(((Gerente) p).getDepartamento());
+            
+        }
+        
+        
+        if(p instanceof Empleado){
+            System.out.println("Es una instancia de Empleado");
+            System.out.println(((Empleado) p).getNumSegSocial());
+        }
+        
+        if (p instanceof Persona){
+            System.out.println("Es una instancia de Persona");
+        }
+        
+        
+        
+        
+        
+        
     }
     
 }
