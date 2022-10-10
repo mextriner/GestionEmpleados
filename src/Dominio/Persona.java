@@ -5,14 +5,15 @@
  */
 package Dominio;
 import Principal.GestionEmpleados;
+import java.io.Serializable;
 
 /**
  *
  * @author Alumno Mañana
  */
-public class Persona {
-    String nombre, apellido;
-    int id;
+public class Persona implements Serializable{
+    private String nombre, apellido;
+    private int id;
 
     
     public Persona() {
@@ -24,6 +25,14 @@ public class Persona {
         this();
         this.nombre = nombre;
         this.apellido = apellido;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     
@@ -42,6 +51,31 @@ public class Persona {
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 37 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Persona other = (Persona) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        return true;
     }
 
     
